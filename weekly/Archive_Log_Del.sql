@@ -1,0 +1,1 @@
+delete noprompt archivelog all completed before 'SYSDATE-7';
