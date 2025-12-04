@@ -1,0 +1,8 @@
+1- create another temporary tablespace 
+create bigfile temporary tablespace temp2 tempfile '/xxxx/xxxx' size 500m autoextend on next 1024m;
+2- change default database temporary tablespace temp2
+alter database default temporary tablespace temp2;
+3-make sure no sessions are using your old temp tablespace
+select username ,session_num,session_addr from v$sort_usage;
+4- drop old tablespace temp
+drop tablespace temp1 including contents and datafiles;

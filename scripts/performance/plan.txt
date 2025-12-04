@@ -1,0 +1,5 @@
+
+select * from table(dbms_xplan.display)
+select * from v$sql_workarea
+select * from table(dbms_sql_monitor.report_sql_monitor)
+--------------------------

@@ -1,0 +1,7 @@
+﻿@reload_ratio.sql
+@hidden_para
+select sum(pins) "executions",sum(reloads) "cache misses while executing" ,round(sum(pins)/(sum(reloads)+sum(pins))*100,2) "hit ratio" from v$librarycache
+select pool,bytes/*/1024/1024/1024*/ from v$sgastat where pool='shared pool' and name like '%free_memory%'
+select * from v$sga_target_advice
+select * from v$shared_pool_advice
+select * from v$sga_dynamic_components

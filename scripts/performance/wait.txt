@@ -1,0 +1,29 @@
+v$session_wait_class,  v$system_wait_class, v$service_wait_class , v$event_name
+select * from V$EVENT_NAME
+Time information columns for wait events are populated only if the TIMED_STATISTICS initialization parameter is set to true.
+
+-----------------------------------------------
+
+select service_name, event, average_wait
+    from v$service_event
+    where time_waited > 0;
+
+select service_name,event,average_wait from v$service_event where time_waited>0
+ 
+---------------------------------------------
+SELECT sid, event  FROM v$session_wait  WHERE wait_time = 0;
+
+SELECT sid, seq#, event, wait_time, state
+    FROM v$session_wait;
+----------------------------------------------
+V$SESSION_WAIT, V$SYSTEM_EVENT, V$SERVICE_EVENT, V$SESSION_EVENT (TIME_WAITED_MICRO column)
+
+
+V$SQL, V$SQLAREA (CPU_TIME, ELAPSED_TIME columns)
+
+V$LATCH, V$LATCH_PARENT, V$LATCH_CHILDREN (WAIT_TIME column)
+V$SQL_WORKAREA, V$SQL_WORKAREA_ACTIVE (ACTIVE_TIME column)
+V$ENQUEUE_STAT (CUM_WAIT_TIME column)
+
+
+

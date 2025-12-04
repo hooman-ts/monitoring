@@ -1,0 +1,1 @@
+select file#,substr(name,1,70), recover, status, error,fuzzy, checkpoint_change#,checkpoint_time, resetlogs_change#, resetlogs_time from v$datafile_header;

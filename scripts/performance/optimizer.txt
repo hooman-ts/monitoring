@@ -1,0 +1,15 @@
+select * from v$sys_optimizer_env
+select * from v$ses_optimizer_env
+select * from v$sql_optimizer_env
+
+Controlling the Behavior of the Optimizer with ParameterswithParameter
+CURSOR_SHARING
+•DB FILE MULTIBLOCK READ COUNT(autotuned)
+DB_FILE_MULTIBLOCK_READ_COUNT(autotuned)
+•OPTIMIZER_INDEX_CACHING between 25 to 50 for oltp
+•OPTIMIZER_INDEX_COST_ADJ between 10 to 30 for oltp
+•PGA_AGGREGATE_TARGET
+•OPTIMIZER_MODE
+•OPTIMIZER_FEATURES_ENABLE
+•OPTIMIZER_ADAPTIVE_FEATURES
+•OPTIMIZER_ADAPTIVE_REPORTING_ONLY

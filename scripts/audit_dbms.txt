@@ -1,0 +1,28 @@
+﻿
+begin
+sys.dbms_audit_mgmt.init_cleanup(dbms_audit_mgmt.AUDIT_TRAIL_ALL,2);
+end;
+begin
+dbms_audit_mgmt.set_last_archive_timestamp(
+audit_trail_type=>dbms_audit_mgmt.AUDIT_TRAIL_AUD_STD,
+last_archive_time=>sysdate-30);
+end;
+
+begin
+dbms_audit_mgmt.create_purge_job(
+audit_trail_type=>dbms_audit_mgmt.AUDIT_TRAIL_ALL,
+audit_trail_purge_interval=> 48  ,
+audit_trail_purge_name=> 'cleaning' ,
+use_last_arch_timestamp=>true);
+end;
+
+
+begin
+sys.dbms_audit_mgmt.deinit_cleanup(dbms_audit_mgmt.AUDIT_TRAIL_ALL);
+end;
+
+select * from dba_audit_mgmt_clean_events
+
+select * from dba_audit_mgmt_clean_events
+select * from dba_audit_mgmt_cleanup_jobs
+select * from dba_audit_mgmt_config_params

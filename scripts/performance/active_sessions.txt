@@ -1,0 +1,10 @@
+select module,program,machine,schemaname,service_name,wait_class,event,count(*) from v$session 
+where service_name='mmsdb'and 
+status ='ACTIVE' group by module,program,machine,schemaname,service_name,event,wait_class
+
+--------------------------------------------------
+
+select s.module,s.program,s.machine,s.schemaname,s.service_name,s.wait_class,s.event,
+t.SQL_TEXT,t.cpu_time,t.PARSE_CALLS,t.DISK_READS,t.DIRECT_WRITES,t.BUFFER_GETS,t.ROWS_PROCESSED
+,t.FETCHES,t.EXECUTIONS from v$session s,v$sqlstats t where s.SQL_ID=t.sql_id and s.service_name='mmsdb'and 
+s.status ='ACTIVE' and t.LAST_ACTIVE_TIME>sysdate-1/24

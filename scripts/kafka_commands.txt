@@ -1,0 +1,59 @@
+# docs
+	https://docs.confluent.io/kafka/operations-tools/kafka-tools.html
+
+# Delete a topic
+	./bin/kafka-topics.sh --bootstrap-server localhost:9092 --topic shap_isctable --delete
+
+# start zookeeper:
+	./bin/zookeeper-server-start.sh config/zookeeper.properties &
+
+# start kafka:
+	./bin/kafka-server-start.sh config/server.properties &
+
+# start connector:
+	./bin/connect-distributed.sh config/connect-distributed-jdbc.properties &
+
+# list of brokers:
+	./bin/zookeeper-shell.sh localhost:2181 ls /brokers/ids
+	./bin/zookeeper-shell.sh localhost:2181 get /brokers/ids/0
+
+# Connector status
+	http://172.24.66.71:8083/connectors/oracle-source/status
+
+# Topic Description
+	./bin/kafka-topics.sh --bootstrap-server kafka-node01:9092 --describe --topic oracle_TAB_SDW_PSP_TYP1
+
+# Create Topic
+	./bin/kafka-topics.sh --create --bootstrap-server kafka-node01:9092 --replication-factor 2 --partitions 3 --topic oracle_TAB_SDW_PSP_TYP1
+
+# https://www.baeldung.com/kafka-purge-topic
+ # Topic Operations:
+	# get last n messages:
+		./bin/kafka-console-consumer.sh --bootstrap-server=172.24.66.77:9092 --from-beginning --topic oracle_TAB_SDW_PSP_TYP1 --max-messages 3
+
+	# Change Retention Period:	
+		./bin/kafka-configs.sh --alter --add-config retention.ms=10000 --bootstrap-server=0.0.0.0:9092 --topic purge-scenario
+
+# get a specific offset
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mytopic --offset 10 --partition 0
+
+# List of consumer group:
+	./bin/kafka-consumer-groups.sh --bootstrap-server kafka-node01:9092 --all-groups -describe
+# or
+	./bin/kafka-consumer-groups.sh --bootstrap-server kafka-node01:9092 --group myConsumerGroup --describe
+
+# make sure that the consumer group is not active
+# Reset offset to the latest or the earliest:
+	./bin/kafka-consumer-groups.sh --bootstrap-server kafka-node01:9092 --group myConsumerGroup --reset-offsets --to-earliest --topic my_topic -execute
+	./bin/kafka-consumer-groups.sh --bootstrap-server kafka-node01:9092 --group myConsumerGroup --reset-offsets --to-latest --topic my_topic -execute
+
+# Reset the consumer offset to specify a time:
+	./bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group myConsumerGroup --reset-offsets --to-datetime 2020-12-20T00:00:00.000 --topic my_topic --execute
+----------------------------
+./bin/kafka-topics.sh --bootstrap-server=localhost:9092 --list
+./bin/kafka-topics.sh --bootstrap-server localhost:9092 --describe --topic shap_isctable
+./bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic shap_isctable
+
+
+delete all topic 
+./bin/kafka-topics.sh --bootstrap-server localhost:9092 --delete --topic '.*'

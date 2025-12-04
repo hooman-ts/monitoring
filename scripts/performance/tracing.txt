@@ -1,0 +1,9 @@
+Instance-Level Tracing
+
+EXEC DBMS_MONITOR.DATABASE_TRACE_ENABLE(). 
+Session-Level Tracing
+EXECUTE DBMS_MONITOR.SESSION_TRACE_ENABLE (8,12, waits=>TRUE, binds=>TRUE);
+where 8 and 12 are the system identifier and serial number of the connected user
+
+To enable the writing of a trace file for your current session, execute the following command:
+EXECUTE DBMS_SESSION.SET_SQL_TRACE(TRUE)

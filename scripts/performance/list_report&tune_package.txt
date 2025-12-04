@@ -1,0 +1,9 @@
+awrrpt.sql, awrrpti.sql, addmrtp.sql, addmrpti.sql, ashrpt.sql, ashrpti.sql, awrddrpt.sql, awrddrpi.sql, awrsqrpi.sql, awrsqrpt.sql, awrextr.sql, and awrload.sql, awrextr.sql, awrload.sql, awrinfo.sql, spawrrac.sql.
+
+The DBMS_SQLTUNE package 
+The DBMS_ADVISOR package, when the value of the ADVISOR_NAME parameter is either SQL Tuning Advisor or SQL Access Advisor 
+V$SQL_MONITOR
+V$SQL_PLAN_MONITOR
+The sqltrpt.sql report found in the /rdbms/admin/ directory of the ORACLE_HOME directory.
+
+v$fixed_table, dict ,

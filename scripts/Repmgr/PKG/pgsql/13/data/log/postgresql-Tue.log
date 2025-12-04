@@ -1,0 +1,282 @@
+2022-03-15 01:31:53.336 EDT [10854] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 01:31:53.349 EDT [10854] LOG:  listening on IPv6 address "::1", port 5432
+2022-03-15 01:31:53.349 EDT [10854] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-03-15 01:31:53.362 EDT [10854] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 01:31:53.376 EDT [10854] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 01:31:53.387 EDT [10857] LOG:  database system was shut down at 2022-03-15 01:25:55 EDT
+2022-03-15 01:31:53.412 EDT [10854] LOG:  database system is ready to accept connections
+2022-03-15 01:32:00.479 EDT [10854] LOG:  received fast shutdown request
+2022-03-15 01:32:00.507 EDT [10854] LOG:  aborting any active transactions
+2022-03-15 01:32:00.530 EDT [10854] LOG:  background worker "logical replication launcher" (PID 10864) exited with exit code 1
+2022-03-15 01:32:00.530 EDT [10858] LOG:  shutting down
+2022-03-15 01:32:02.047 EDT [10854] LOG:  database system is shut down
+2022-03-15 01:32:02.403 EDT [10874] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 01:32:02.412 EDT [10874] LOG:  listening on IPv6 address "::1", port 5432
+2022-03-15 01:32:02.413 EDT [10874] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-03-15 01:32:02.430 EDT [10874] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 01:32:02.443 EDT [10874] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 01:32:02.460 EDT [10877] LOG:  database system was shut down at 2022-03-15 01:32:02 EDT
+2022-03-15 01:32:02.490 EDT [10874] LOG:  database system is ready to accept connections
+2022-03-15 01:32:05.040 EDT [10886] FATAL:  role "root" does not exist
+2022-03-15 01:33:10.124 EDT [10894] ERROR:  syntax error at or near "createuser" at character 1
+2022-03-15 01:33:10.124 EDT [10894] STATEMENT:  createuser -s repmgr
+	   createdb repmgr -O repmgr
+	       ALTER USER repmgr SET search_path TO repmgr, "$user", public;
+2022-03-15 01:34:23.938 EDT [10918] ERROR:  syntax error at or near "createuser" at character 1
+2022-03-15 01:34:23.938 EDT [10918] STATEMENT:  createuser -s repmgr;
+2022-03-15 01:35:10.074 EDT [10918] ERROR:  syntax error at or near "createuser" at character 1
+2022-03-15 01:35:10.074 EDT [10918] STATEMENT:  createuser -s repmgr
+	createuser
+	createuser -s repmgr;
+2022-03-15 01:35:20.161 EDT [10918] ERROR:  syntax error at or near "-" at character 1
+2022-03-15 01:35:20.161 EDT [10918] STATEMENT:  -s repmgr
+	;
+2022-03-15 01:35:34.266 EDT [10928] ERROR:  syntax error at or near "createuser" at character 1
+2022-03-15 01:35:34.266 EDT [10928] STATEMENT:  createuser -s repmgr;
+2022-03-15 01:35:53.905 EDT [10928] ERROR:  syntax error at or near "-" at character 13
+2022-03-15 01:35:53.905 EDT [10928] STATEMENT:  create user -s repmgr
+	;
+2022-03-15 01:37:07.272 EDT [10928] ERROR:  syntax error at or near "reateuser" at character 1
+2022-03-15 01:37:07.272 EDT [10928] STATEMENT:  reateuser 
+	;
+2022-03-15 01:37:50.249 EDT [10948] ERROR:  role "repmgr" already exists
+2022-03-15 01:37:50.249 EDT [10948] STATEMENT:  CREATE ROLE repmgr SUPERUSER CREATEDB CREATEROLE INHERIT LOGIN;
+2022-03-15 01:38:02.717 EDT [10952] ERROR:  database "repmgr" already exists
+2022-03-15 01:38:02.717 EDT [10952] STATEMENT:  CREATE DATABASE repmgr OWNER repmgr;
+2022-03-15 01:43:59.329 EDT [10874] LOG:  received fast shutdown request
+2022-03-15 01:43:59.350 EDT [10874] LOG:  aborting any active transactions
+2022-03-15 01:43:59.372 EDT [10874] LOG:  background worker "logical replication launcher" (PID 10884) exited with exit code 1
+2022-03-15 01:43:59.373 EDT [10878] LOG:  shutting down
+2022-03-15 01:43:59.898 EDT [10874] LOG:  database system is shut down
+2022-03-15 01:44:00.320 EDT [11009] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 01:44:00.323 EDT [11009] LOG:  listening on IPv6 address "::1", port 5432
+2022-03-15 01:44:00.323 EDT [11009] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-03-15 01:44:00.333 EDT [11009] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 01:44:00.348 EDT [11009] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 01:44:00.370 EDT [11012] LOG:  database system was shut down at 2022-03-15 01:43:59 EDT
+2022-03-15 01:44:00.400 EDT [11009] LOG:  database system is ready to accept connections
+2022-03-15 01:59:37.832 EDT [11009] LOG:  received fast shutdown request
+2022-03-15 01:59:37.859 EDT [11009] LOG:  aborting any active transactions
+2022-03-15 01:59:37.886 EDT [11009] LOG:  background worker "logical replication launcher" (PID 11019) exited with exit code 1
+2022-03-15 01:59:37.886 EDT [11013] LOG:  shutting down
+2022-03-15 01:59:39.376 EDT [11009] LOG:  database system is shut down
+2022-03-15 02:10:14.178 EDT [1246] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 02:10:14.187 EDT [1246] LOG:  listening on IPv6 address "::1", port 5432
+2022-03-15 02:10:14.187 EDT [1246] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-03-15 02:10:14.228 EDT [1246] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 02:10:14.241 EDT [1246] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 02:10:14.463 EDT [1249] LOG:  database system was shut down at 2022-03-15 01:59:39 EDT
+2022-03-15 02:10:14.591 EDT [1246] LOG:  database system is ready to accept connections
+2022-03-15 02:12:31.408 EDT [1246] LOG:  received fast shutdown request
+2022-03-15 02:12:31.450 EDT [1246] LOG:  aborting any active transactions
+2022-03-15 02:12:31.478 EDT [1246] LOG:  background worker "logical replication launcher" (PID 1256) exited with exit code 1
+2022-03-15 02:12:31.478 EDT [1250] LOG:  shutting down
+2022-03-15 02:12:33.781 EDT [1246] LOG:  database system is shut down
+2022-03-15 02:15:23.636 EDT [1374] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 02:15:23.646 EDT [1374] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 02:15:23.646 EDT [1374] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 02:15:23.659 EDT [1374] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 02:15:23.672 EDT [1374] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 02:15:23.692 EDT [1377] LOG:  database system was shut down at 2022-03-15 02:12:33 EDT
+2022-03-15 02:15:23.728 EDT [1374] LOG:  database system is ready to accept connections
+2022-03-15 02:29:52.600 EDT [1651] FATAL:  password authentication failed for user "repmgr"
+2022-03-15 02:29:52.600 EDT [1651] DETAIL:  User "repmgr" has no password assigned.
+	Connection matched pg_hba.conf line 86: "host    all             all             127.0.0.1/32            scram-sha-256"
+2022-03-15 02:30:54.423 EDT [1668] FATAL:  password authentication failed for user "repmgr"
+2022-03-15 02:30:54.423 EDT [1668] DETAIL:  User "repmgr" has no password assigned.
+	Connection matched pg_hba.conf line 86: "host    all             all             127.0.0.1/32            scram-sha-256"
+2022-03-15 02:38:20.346 EDT [1374] LOG:  received fast shutdown request
+2022-03-15 02:38:20.374 EDT [1374] LOG:  aborting any active transactions
+2022-03-15 02:38:20.405 EDT [1374] LOG:  background worker "logical replication launcher" (PID 1384) exited with exit code 1
+2022-03-15 02:38:20.406 EDT [1378] LOG:  shutting down
+2022-03-15 02:38:20.993 EDT [1374] LOG:  database system is shut down
+2022-03-15 02:38:21.407 EDT [1775] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 02:38:21.416 EDT [1775] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 02:38:21.417 EDT [1775] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 02:38:21.430 EDT [1775] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 02:38:21.449 EDT [1775] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 02:38:21.474 EDT [1778] LOG:  database system was shut down at 2022-03-15 02:38:20 EDT
+2022-03-15 02:38:21.507 EDT [1775] LOG:  database system is ready to accept connections
+2022-03-15 02:43:11.747 EDT [1859] ERROR:  relation "repmgr.nodes" does not exist at character 15
+2022-03-15 02:43:11.747 EDT [1859] STATEMENT:  select * from repmgr.nodes;
+2022-03-15 02:43:25.459 EDT [1859] ERROR:  relation "repmgr.nodes" does not exist at character 15
+2022-03-15 02:43:25.459 EDT [1859] STATEMENT:  select * from repmgr.nodes;
+2022-03-15 02:43:36.955 EDT [1859] ERROR:  relation "repmgr.nodes" does not exist at character 15
+2022-03-15 02:43:36.955 EDT [1859] STATEMENT:  SELECT * FROM repmgr.nodes;
+2022-03-15 02:44:25.538 EDT [1867] ERROR:  syntax error at or near "database" at character 1
+2022-03-15 02:44:25.538 EDT [1867] STATEMENT:  database repmgr
+	;
+2022-03-15 02:45:22.618 EDT [1877] ERROR:  relation "nodes" does not exist at character 15
+2022-03-15 02:45:22.618 EDT [1877] STATEMENT:  select * from nodes;
+2022-03-15 02:58:13.087 EDT [1984] FATAL:  no pg_hba.conf entry for host "192.168.1.5", user "postgres", database "postgres", SSL off
+2022-03-15 03:05:42.272 EDT [1775] LOG:  received fast shutdown request
+2022-03-15 03:05:42.297 EDT [1775] LOG:  aborting any active transactions
+2022-03-15 03:05:42.319 EDT [1775] LOG:  background worker "logical replication launcher" (PID 1785) exited with exit code 1
+2022-03-15 03:05:42.319 EDT [1779] LOG:  shutting down
+2022-03-15 03:05:43.635 EDT [1775] LOG:  database system is shut down
+2022-03-15 03:05:44.441 EDT [2065] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 03:05:44.445 EDT [2065] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 03:05:44.446 EDT [2065] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 03:05:44.471 EDT [2065] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 03:05:44.487 EDT [2065] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 03:05:44.559 EDT [2068] LOG:  database system was shut down at 2022-03-15 03:05:43 EDT
+2022-03-15 03:05:44.612 EDT [2065] LOG:  database system is ready to accept connections
+2022-03-15 03:11:09.377 EDT [2114] ERROR:  could not open file "./postgresql.conf.bak": Permission denied
+2022-03-15 03:11:09.377 EDT [2114] STATEMENT:  BASE_BACKUP LABEL 'repmgr base backup' PROGRESS   NOWAIT    MANIFEST 'yes' 
+2022-03-15 03:11:09.835 EDT [2118] LOG:  unexpected EOF on standby connection
+2022-03-15 03:11:09.835 EDT [2118] STATEMENT:  START_REPLICATION SLOT "pg_basebackup_2118" 0/8000000 TIMELINE 1
+2022-03-15 03:15:31.676 EDT [2148] ERROR:  could not open file "./postgresql.conf.bak": Permission denied
+2022-03-15 03:15:31.676 EDT [2148] STATEMENT:  BASE_BACKUP LABEL 'repmgr base backup' PROGRESS   NOWAIT    MANIFEST 'yes' 
+2022-03-15 03:15:32.393 EDT [2150] LOG:  unexpected EOF on standby connection
+2022-03-15 03:15:32.393 EDT [2150] STATEMENT:  START_REPLICATION SLOT "pg_basebackup_2150" 0/9000000 TIMELINE 1
+2022-03-15 03:38:21.548 EDT [2065] LOG:  received fast shutdown request
+2022-03-15 03:38:21.559 EDT [2065] LOG:  aborting any active transactions
+2022-03-15 03:38:21.560 EDT [2306] FATAL:  terminating connection due to administrator command
+2022-03-15 03:38:21.597 EDT [2065] LOG:  background worker "logical replication launcher" (PID 2075) exited with exit code 1
+2022-03-15 03:38:21.598 EDT [2069] LOG:  shutting down
+2022-03-15 03:38:22.458 EDT [2305] ERROR:  requested WAL segment 00000001000000000000000B has already been removed
+2022-03-15 03:38:22.458 EDT [2305] STATEMENT:  START_REPLICATION 0/B000000 TIMELINE 1
+2022-03-15 03:38:22.550 EDT [2356] FATAL:  the database system is shutting down
+2022-03-15 03:38:22.568 EDT [2065] LOG:  database system is shut down
+2022-03-15 03:38:22.999 EDT [2363] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 03:38:23.002 EDT [2363] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 03:38:23.002 EDT [2363] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 03:38:23.014 EDT [2363] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 03:38:23.034 EDT [2363] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 03:38:23.057 EDT [2366] LOG:  database system was shut down at 2022-03-15 03:38:22 EDT
+2022-03-15 03:38:23.090 EDT [2363] LOG:  database system is ready to accept connections
+2022-03-15 03:55:49.900 EDT [2363] LOG:  received fast shutdown request
+2022-03-15 03:55:49.913 EDT [2363] LOG:  aborting any active transactions
+2022-03-15 03:55:49.913 EDT [3045] FATAL:  terminating connection due to administrator command
+2022-03-15 03:55:49.950 EDT [2363] LOG:  background worker "logical replication launcher" (PID 2373) exited with exit code 1
+2022-03-15 03:55:49.951 EDT [2367] LOG:  shutting down
+2022-03-15 03:55:51.373 EDT [3454] FATAL:  the database system is shutting down
+2022-03-15 03:55:51.548 EDT [3456] FATAL:  the database system is shutting down
+2022-03-15 03:55:51.640 EDT [3458] FATAL:  the database system is shutting down
+2022-03-15 03:55:51.821 EDT [3459] FATAL:  the database system is shutting down
+2022-03-15 03:55:52.168 EDT [3460] FATAL:  the database system is shutting down
+2022-03-15 03:55:53.713 EDT [2363] LOG:  database system is shut down
+2022-03-15 03:58:38.693 EDT [764] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 03:58:38.737 EDT [764] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 03:58:38.737 EDT [764] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 03:58:38.806 EDT [764] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 03:58:38.850 EDT [764] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 03:58:39.149 EDT [769] LOG:  database system was shut down at 2022-03-15 03:55:51 EDT
+2022-03-15 03:58:40.028 EDT [764] LOG:  database system is ready to accept connections
+2022-03-15 03:58:47.409 EDT [779] LOG:  could not receive data from client: Connection reset by peer
+2022-03-15 04:10:59.972 EDT [764] LOG:  received fast shutdown request
+2022-03-15 04:11:00.040 EDT [764] LOG:  aborting any active transactions
+2022-03-15 04:11:00.077 EDT [764] LOG:  background worker "logical replication launcher" (PID 776) exited with exit code 1
+2022-03-15 04:11:00.077 EDT [770] LOG:  shutting down
+2022-03-15 04:11:02.862 EDT [764] LOG:  database system is shut down
+2022-03-15 04:12:47.736 EDT [764] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:12:47.810 EDT [764] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:12:47.810 EDT [764] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:12:47.883 EDT [764] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:12:47.933 EDT [764] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:12:48.184 EDT [769] LOG:  database system was shut down at 2022-03-15 04:11:02 EDT
+2022-03-15 04:12:48.879 EDT [764] LOG:  database system is ready to accept connections
+2022-03-15 04:12:56.882 EDT [779] LOG:  could not receive data from client: Connection reset by peer
+2022-03-15 04:19:08.052 EDT [764] LOG:  received fast shutdown request
+2022-03-15 04:19:08.073 EDT [764] LOG:  aborting any active transactions
+2022-03-15 04:19:08.105 EDT [764] LOG:  background worker "logical replication launcher" (PID 776) exited with exit code 1
+2022-03-15 04:19:08.106 EDT [770] LOG:  shutting down
+2022-03-15 04:19:08.759 EDT [764] LOG:  database system is shut down
+2022-03-15 04:19:28.306 EDT [1096] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:19:28.311 EDT [1096] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:19:28.311 EDT [1096] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:19:28.325 EDT [1096] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:19:28.337 EDT [1096] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:19:28.358 EDT [1099] LOG:  database system was shut down at 2022-03-15 04:19:08 EDT
+2022-03-15 04:19:28.396 EDT [1096] LOG:  database system is ready to accept connections
+2022-03-15 04:33:12.241 EDT [1096] LOG:  received fast shutdown request
+2022-03-15 04:33:12.272 EDT [1096] LOG:  aborting any active transactions
+2022-03-15 04:33:12.272 EDT [1110] FATAL:  terminating connection due to administrator command
+2022-03-15 04:33:12.307 EDT [1096] LOG:  background worker "logical replication launcher" (PID 1106) exited with exit code 1
+2022-03-15 04:33:12.308 EDT [1100] LOG:  shutting down
+2022-03-15 04:33:12.518 EDT [1531] FATAL:  the database system is shutting down
+2022-03-15 04:33:12.594 EDT [1532] FATAL:  the database system is shutting down
+2022-03-15 04:33:12.655 EDT [1533] FATAL:  the database system is shutting down
+2022-03-15 04:33:13.339 EDT [1096] LOG:  database system is shut down
+2022-03-15 04:33:13.836 EDT [1541] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:33:13.849 EDT [1541] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:33:13.850 EDT [1541] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:33:13.865 EDT [1541] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:33:13.877 EDT [1541] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:33:13.895 EDT [1544] LOG:  database system was shut down at 2022-03-15 04:33:13 EDT
+2022-03-15 04:33:13.925 EDT [1541] LOG:  database system is ready to accept connections
+2022-03-15 04:33:38.861 EDT [1541] LOG:  received fast shutdown request
+2022-03-15 04:33:38.885 EDT [1541] LOG:  aborting any active transactions
+2022-03-15 04:33:38.886 EDT [1570] FATAL:  terminating connection due to administrator command
+2022-03-15 04:33:38.919 EDT [1541] LOG:  background worker "logical replication launcher" (PID 1551) exited with exit code 1
+2022-03-15 04:33:38.919 EDT [1545] LOG:  shutting down
+2022-03-15 04:33:39.383 EDT [1578] FATAL:  the database system is shutting down
+2022-03-15 04:33:39.452 EDT [1579] FATAL:  the database system is shutting down
+2022-03-15 04:33:39.516 EDT [1580] FATAL:  the database system is shutting down
+2022-03-15 04:33:40.096 EDT [1541] LOG:  database system is shut down
+2022-03-15 04:33:40.735 EDT [1588] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:33:40.738 EDT [1588] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:33:40.738 EDT [1588] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:33:40.747 EDT [1588] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:33:40.761 EDT [1588] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:33:40.786 EDT [1591] LOG:  database system was shut down at 2022-03-15 04:33:39 EDT
+2022-03-15 04:33:40.834 EDT [1588] LOG:  database system is ready to accept connections
+2022-03-15 04:46:08.030 EDT [1588] LOG:  received fast shutdown request
+2022-03-15 04:46:08.064 EDT [1588] LOG:  aborting any active transactions
+2022-03-15 04:46:08.065 EDT [1797] FATAL:  terminating connection due to administrator command
+2022-03-15 04:46:08.077 EDT [1600] FATAL:  terminating connection due to administrator command
+2022-03-15 04:46:08.119 EDT [1588] LOG:  background worker "logical replication launcher" (PID 1598) exited with exit code 1
+2022-03-15 04:46:08.133 EDT [1592] LOG:  shutting down
+2022-03-15 04:46:08.963 EDT [2166] FATAL:  the database system is shutting down
+2022-03-15 04:46:09.034 EDT [2167] FATAL:  the database system is shutting down
+2022-03-15 04:46:09.355 EDT [2168] FATAL:  the database system is shutting down
+2022-03-15 04:46:09.418 EDT [1794] ERROR:  requested WAL segment 000000010000000000000013 has already been removed
+2022-03-15 04:46:09.418 EDT [1794] STATEMENT:  START_REPLICATION 0/13000000 TIMELINE 1
+2022-03-15 04:46:09.428 EDT [2170] FATAL:  the database system is shutting down
+2022-03-15 04:46:09.466 EDT [1588] LOG:  database system is shut down
+2022-03-15 04:46:59.903 EDT [2231] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:46:59.904 EDT [2231] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:46:59.904 EDT [2231] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:46:59.919 EDT [2231] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:46:59.934 EDT [2231] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:46:59.955 EDT [2234] LOG:  database system was shut down at 2022-03-15 04:46:09 EDT
+2022-03-15 04:46:59.989 EDT [2231] LOG:  database system is ready to accept connections
+2022-03-15 04:51:03.002 EDT [2231] LOG:  received fast shutdown request
+2022-03-15 04:51:03.039 EDT [2231] LOG:  aborting any active transactions
+2022-03-15 04:51:03.070 EDT [2231] LOG:  background worker "logical replication launcher" (PID 2241) exited with exit code 1
+2022-03-15 04:51:03.071 EDT [2235] LOG:  shutting down
+2022-03-15 04:51:03.803 EDT [2231] LOG:  database system is shut down
+2022-03-15 04:52:16.321 EDT [2439] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:52:16.329 EDT [2439] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:52:16.329 EDT [2439] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:52:16.342 EDT [2439] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:52:16.361 EDT [2439] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:52:16.400 EDT [2442] LOG:  database system was shut down at 2022-03-15 04:51:03 EDT
+2022-03-15 04:52:16.478 EDT [2439] LOG:  database system is ready to accept connections
+2022-03-15 04:56:49.730 EDT [2439] LOG:  received fast shutdown request
+2022-03-15 04:56:49.762 EDT [2439] LOG:  aborting any active transactions
+2022-03-15 04:56:49.765 EDT [2553] FATAL:  terminating connection due to administrator command
+2022-03-15 04:56:49.775 EDT [2453] FATAL:  terminating connection due to administrator command
+2022-03-15 04:56:49.818 EDT [2439] LOG:  background worker "logical replication launcher" (PID 2449) exited with exit code 1
+2022-03-15 04:56:49.819 EDT [2443] LOG:  shutting down
+2022-03-15 04:56:50.378 EDT [2664] FATAL:  the database system is shutting down
+2022-03-15 04:56:50.989 EDT [2665] FATAL:  the database system is shutting down
+2022-03-15 04:56:51.020 EDT [2550] ERROR:  requested WAL segment 000000010000000000000017 has already been removed
+2022-03-15 04:56:51.020 EDT [2550] STATEMENT:  START_REPLICATION 0/17000000 TIMELINE 1
+2022-03-15 04:56:51.061 EDT [2666] FATAL:  the database system is shutting down
+2022-03-15 04:56:51.097 EDT [2439] LOG:  database system is shut down
+2022-03-15 04:57:27.572 EDT [2675] LOG:  starting PostgreSQL 13.6 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 8.5.0 20210514 (Red Hat 8.5.0-4), 64-bit
+2022-03-15 04:57:27.573 EDT [2675] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-03-15 04:57:27.574 EDT [2675] LOG:  listening on IPv6 address "::", port 5432
+2022-03-15 04:57:27.584 EDT [2675] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-03-15 04:57:27.599 EDT [2675] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-03-15 04:57:27.617 EDT [2678] LOG:  database system was shut down at 2022-03-15 04:56:50 EDT
+2022-03-15 04:57:27.649 EDT [2675] LOG:  database system is ready to accept connections
+2022-03-15 05:09:13.282 EDT [2675] LOG:  received fast shutdown request
+2022-03-15 05:09:13.328 EDT [2675] LOG:  aborting any active transactions
+2022-03-15 05:09:13.329 EDT [2689] FATAL:  terminating connection due to administrator command
+2022-03-15 05:09:13.364 EDT [2675] LOG:  background worker "logical replication launcher" (PID 2685) exited with exit code 1
+2022-03-15 05:09:13.365 EDT [2679] LOG:  shutting down
+2022-03-15 05:09:14.363 EDT [3094] FATAL:  the database system is shutting down
+2022-03-15 05:09:14.468 EDT [3095] FATAL:  the database system is shutting down
+2022-03-15 05:09:14.504 EDT [2675] LOG:  database system is shut down

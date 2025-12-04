@@ -1,0 +1,22 @@
+select value from system.logmnr_parameter$ where name = 'LOGMINER_REDO_QUEUE_SIZE' and session# = :1
+
+begin
+  dbms_logmnr.start_logmnr();
+  dbms_logmnr.add_logfile('+FRA/HUBDBRAC/ARCHIVELOG/2023_11_18/thread_1_seq_71716.396.1153222591');
+  dbms_logmnr.add_logfile('+FRA/HUBDBRAC/ARCHIVELOG/2023_11_18/thread_2_seq_61609.410.1153222821');
+end;
+
+begin
+    dbms_logmnr.end_logmnr();
+end;
+
+select col.*, com.Comments
+from sys.all_tab_columns col,
+     sys.all_col_comments com
+where col.owner = 'SYS'
+and col.table_name = 'V_$LOGMNR_CONTENTS'
+and com.Owner (+) = 'SYS'
+and com.Table_Name (+) = 'V_$LOGMNR_CONTENTS'
+and com.Column_Name (+) = col.Column_Name
+and com.origin_con_id (+)  in (1, sys_context('userenv', 'con_id'))
+order by col.column_id

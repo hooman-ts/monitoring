@@ -1,0 +1,15 @@
+select FILE#, STATUS,  Bytes/1024/1024 Size_MB, tf.name Filename, tsp.name TSP_NAME  
+    from v$tempfile tf , v$tablespace tsp where tf.ts# = tsp.ts#;
+
+
+SELECT a.username, a.sid, a.serial#, a.osuser, b.tablespace, b.blocks, c.sql_text
+      FROM v$session a, v$tempseg_usage b, v$sqlarea WHERE a.saddr = b.session_addr AND c.address= a.sql_address
+      AND c.hash_value = a.sql_hash_value ORDER BY b.tablespace, b.blocks;
+
+
+select sum( u.blocks * blk.block_size)/1024/1024 "MB. in sort segments", (hwm.max * blk.block_size)/1024/1024 "MB. High Water Mark"
+    from v$sort_usage u, (select block_size from dba_tablespaces
+     where contents = 'TEMPORARY') blk, (select segblk#+blocks max from
+     v$sort_usage where segblk# = (select max(segblk#) from v$sort_usage) ) hwm group by hwm.max * blk.block_size/1024/1024;
+
+

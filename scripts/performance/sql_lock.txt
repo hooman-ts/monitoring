@@ -1,0 +1,4 @@
+select s.module,s.program,s.machine,s.schemaname,s.service_name,s.wait_class,s.event,
+t.SQL_TEXT,t.cpu_time,t.PARSE_CALLS,t.DISK_READS,t.DIRECT_WRITES,t.BUFFER_GETS,t.ROWS_PROCESSED
+,t.FETCHES,t.EXECUTIONS,l.TYPE lock_type,lt.DESCRIPTION,lt.NAME from v$lock l,v$session s,v$sqlstats t,v$lock_type lt where l.sid=s.sid and s.service_name='mmsdb'and 
+s.status ='ACTIVE' and s.SQL_ID=t.sql_id and lt.TYPE=l.TYPE and  l.BLOCK>0

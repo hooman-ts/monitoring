@@ -1,0 +1,9 @@
+explain plan for 
+select d.pspiin,t.acceptorcode , t.shoptypecode mcc,i.corporationmaincode sub_mcc,t.farsiname ,t.englishcity, t.provincecode, t.postalcode
+, d.termid,d.termtype, d.prcode, d.shpamnt, d.shptrnsdate, d.shptrnstime
+from SHAPARAK.SHPACCEPTORTBL_MV t , SHAPARAK.DEBITTRANS d , shaparak.shpinfotbl_mv i
+where d.pspiin = t.payservercode and d.acptrid = t.acceptorcode
+and t.payservercode = i.payservercode and t.acceptorcode = i.acceptorcode
+and d.filedate between to_date('09/01/2019','MM/DD/YYYY') and to_date('09/04/2019','MM/DD/YYYY')
+and t.shoptypecode='5411';
+select plan_table_output from table(dbms_xplan.display()); 

@@ -1,0 +1,22 @@
+PEER_MASTER_NODE=node2
+
+systemctl stop postgresql-13
+systemctl stop repmonitor.service
+rm -rf /var/lib/pgsql/13/data-bak
+mv /var/lib/pgsql/13/data /var/lib/pgsql/13/data-bak
+mkdir /var/lib/pgsql/13/data
+chown postgres:postgres /var/lib/pgsql/13/data
+runuser -l postgres -c  "/usr/pgsql-13/bin/repmgr -h $PEER_MASTER_NODE -U repmgr -d repmgr -f /etc/repmgr/13/repmgr.conf standby clone"
+systemctl restart postgresql-13
+runuser -l postgres -c "/usr/pgsql-13/bin/repmgr -f /etc/repmgr/13/repmgr.conf standby register --force"
+sed -i 's/THIS_NODE_SHOULD_BE_MASTER=true/THIS_NODE_SHOULD_BE_MASTER=false/g' /etc/repmgr/scripts/monitoring.sh
+sleep 2
+systemctl restart repmgr-13
+
+systemctl restart repmonitor
+runuser -l postgres -c "repmgr cluster show"
+
+ssh $PEER_MASTER_NODE -a 'sed -i 's/THIS_NODE_SHOULD_BE_MASTER=false/THIS_NODE_SHOULD_BE_MASTER=true/g' /etc/repmgr/scripts/monitoring.sh'
+
+#ssh $PEER_MASTER_NODE -a 'systemctl daemon-reload'
+ssh $PEER_MASTER_NODE -a 'systemctl restart repmonitor.service'

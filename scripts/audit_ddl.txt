@@ -1,0 +1,37 @@
+CREATE OR REPLACE NONEDITIONABLE TRIGGER AUDIT_DDL_TRG after ddl on database
+declare
+  sql_text ora_name_list_t;
+  stmt VARCHAR2(4000) := '';
+  n number;
+begin
+  if sys_context('USERENV','MODULE') like 'Data Pump%' or
+     sys_context('USERENV','MODULE') like 'ude@%' or
+     sys_context('USERENV','MODULE') = 'MMON_SLAVE' or
+     sys_context('USERENV','MODULE') = 'OWB_CCS' or
+     sys_context('USERENV','ACTION') like 'ORA$%'
+  then
+    null;
+  else
+    n:=ora_sql_txt(sql_text);
+    for i in 1..n
+    loop
+      stmt:=substr(stmt||sql_text(i),1,4000);
+    end loop;
+    insert into audit_ddl(d, osuser,current_user,host,ip_address,module,terminal,action,owner,type,name,sysevent,sql_txt)
+    values(
+      sysdate,
+      sys_context('USERENV','OS_USER') ,
+      sys_context('USERENV','CURRENT_USER') ,
+      sys_context('USERENV','HOST') ,
+      sys_context('USERENV','IP_ADDRESS') ,
+      sys_context('USERENV','MODULE') ,
+      sys_context('USERENV','TERMINAL') ,
+      sys_context('USERENV','ACTION') ,
+      ora_dict_obj_owner,
+      ora_dict_obj_type,
+      ora_dict_obj_name,
+      ora_sysevent,
+      stmt
+    );
+  end if;
+end;

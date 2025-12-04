@@ -1,0 +1,78 @@
+select  /*t.*,*/
+t.sql_id,
+dbms_lob.substr(st.sql_text,32000),
+t.apwait_total,
+       t.clwait_total,
+       t.ccwait_total / t.executions_total / 1000000/60,
+       t.plsexec_time_total,
+       t.javexec_time_total,
+       t.elapsed_time_total / t.executions_total / 1000000/60,
+       t.elapsed_time_total/1000000/60,
+       t.rows_processed_total,
+       t.cpu_time_total / t.executions_total / 1000000/60,
+       t.iowait_total / t.executions_total / 1000000/60,
+       t.executions_total,
+       t.elapsed_time_total/t.executions_total/1000000/60,
+       t.elapsed_time_delta/t.executions_delta/1000000/60
+  from dba_hist_sqlstat t ,dba_hist_sqltext st
+ where
+  t.dbid=st.dbid and t.sql_id=st.sql_id and
+  t.executions_total>0 and t.elapsed_time_delta>0 and t.executions_delta>0 and  (t.elapsed_time_delta/t.executions_delta/1000000/60) > 20
+ and t.parsing_schema_name='BI_USER'
+ order by  t.elapsed_time_delta desc
+ /*and d.snap_id=t.snap_id
+ and d.dbid=t.dbid
+ and d.instance_number=t.instance_number --and (t.apwait_total/t.executions_total)>1200
+*/
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------
+SELECT STAT.SQL_ID,
+      dbms_lob.substr(txt.sql_text, 32000),
+      stat.executions_total,
+      stat.executions_delta,
+       PLAN_HASH_VALUE,
+       PARSING_SCHEMA_NAME,
+       ELAPSED_TIME_DELTA/1000000,
+       STAT.SNAP_ID,
+       SS.END_INTERVAL_TIME,
+        SS.begin_interval_time
+  FROM DBA_HIST_SQLSTAT STAT, DBA_HIST_SQLTEXT TXT , DBA_HIST_SNAPSHOT SS
+ WHERE STAT.SQL_ID = TXT.SQL_ID
+   AND STAT.DBID = TXT.DBID
+   AND SS.DBID = STAT.DBID
+   AND SS.INSTANCE_NUMBER = STAT.INSTANCE_NUMBER
+   AND STAT.SNAP_ID = SS.SNAP_ID
+ --  AND STAT.DBID = ?
+  -- AND STAT.INSTANCE_NUMBER = ?
+   AND SS.BEGIN_INTERVAL_TIME >= sysdate - 31
+   AND UPPER(PARSING_SCHEMA_NAME) = 'BI_USER'
+   AND ELAPSED_TIME_DELTA >= 20*60*1000000
+ ORDER BY ELAPSED_TIME_DELTA DESC
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+select s.sql_id,d.elapsed_time_total, dbms_lob.substr(s.sql_text, 32000),sb.name,sb.position,sb.value_string
+  from    dba_hist_sqlbind sb left join
+  DBA_HIST_SQLTEXT s on sb.con_id=s.con_id and sb.con_dbid=sb.con_dbid
+and s.sql_id=sb.sql_id and s.dbid=sb.dbid
+left join   
+  dba_hist_sqlstat d
+ on d.dbid = sb.dbid
+   and d.con_id = sb.con_id
+   and d.sql_id = sb.sql_id
+   and d.snap_id=sb.snap_id
+    
+ where d.parsing_schema_name = 'BI_USER'
+   and d.elapsed_time_total > 20 * 60*1000000
+   and sb.con_id=s.con_id and sb.con_dbid=sb.con_dbid
+order by 1
+
+-----------------------------------------------------------------------------------------------------------------
+
+

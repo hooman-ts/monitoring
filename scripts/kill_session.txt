@@ -1,0 +1,3 @@
+alter system kill session '1909,39885' immediate;
+
+select 'alter system  kill session '||''''||sid||','||serial#||''''|| 'immediate;' from v$session where osuser='h_tabarsaied'

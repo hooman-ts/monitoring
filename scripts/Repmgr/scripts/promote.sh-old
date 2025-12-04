@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+### CHECK OLD MASTER_ID node1 node2 ...
+set -u
+set -e
+
+# Configurable items
+PGBOUNCER_HOSTS="192.168.56.1"
+PGBOUNCER_DATABASE_INI="/etc/pgbouncer/db.ini"
+PGBOUNCER_DATABASE="postgres"
+PGBOUNCER_PORT=6532
+
+REPMGR_DB="repmgr"
+REPMGR_USER="postgres"
+
+PGBOUNCER_DATABASE_INI_NEW="/tmp/db.ini"
+OLDMASTER_ID=1
+
+#nodename=$(psql -d $REPMGR_DB -U $REPMGR_USER -t -A -c "SELECT 'postgres= ' || conninfo FROM repmgr.nodes WHERE active = TRUE AND type='primary'" | awk '{print $2}' | cut -d '=' -f 2)
+#echo '[databases]' > $PGBOUNCER_DATABASE_INI_NEW
+#echo "postgres = host=$nodename port=5432 dbname=postgres user=postgres password=*****" >> $PGBOUNCER_DATABASE_INI_NEW
+
+# 1. Promote this node from standby to primary
+
+repmgr standby promote -f /etc/repmgr/repmgr.conf --log-to-file
+repmgr primary unregister --node-id $OLDMASTER_ID
+# 2. Reconfigure pgbouncer instances
+
+#PGBOUNCER_DATABASE_INI_NEW="/tmp/db.ini"
+
+for HOST in $PGBOUNCER_HOSTS
+do
+    # Recreate the pgbouncer config file
+
+nodename=$(psql -d $REPMGR_DB -U $REPMGR_USER -t -A -c "SELECT 'postgres= ' || conninfo FROM repmgr.nodes WHERE active = TRUE AND type='primary'" | awk '{print $2}' | cut -d '=' -f 2)
+echo '[databases]' > $PGBOUNCER_DATABASE_INI_NEW
+echo "postgres = host=$nodename port=5432 dbname=postgres user=postgres password=****" >> $PGBOUNCER_DATABASE_INI_NEW
+
+    echo -e "[databases]\n" > $PGBOUNCER_DATABASE_INI_NEW
+#psql -d $REPMGR_DB -U $REPMGR_USER -t -A -c "SELECT 'postgres= ' || conninfo FROM repmgr.nodes WHERE active = TRUE AND type='primary'" | awk '{print $2}' | cut -d '=' -f 2
+#    psql -d $REPMGR_DB -U $REPMGR_USER -t -A \
+
+#      -c "SELECT '${PGBOUNCER_DATABASE}= ' || conninfo || ' application_name=pgbouncer_${HOST}' \
+#          FROM repmgr.nodes \
+#          WHERE active = TRUE AND type='primary'" >> $PGBOUNCER_DATABASE_INI_NEW
+
+#    psql -d $REPMGR_DB -U $REPMGR_USER -t -A \
+#      -c "SELECT '${PGBOUNCER_DATABASE}-ro= ' || conninfo || ' application_name=pgbouncer_${HOST}' \
+#          FROM repmgr.nodes \
+#          WHERE node_name='${HOST}'" >> $PGBOUNCER_DATABASE_INI_NEW
+
+
+    rsync $PGBOUNCER_DATABASE_INI_NEW $HOST:$PGBOUNCER_DATABASE_INI
+
+    psql -tc "reload" -h $HOST -p $PGBOUNCER_PORT -U postgres pgbouncer
+
+done
+
+# Clean up generated file
+rm $PGBOUNCER_DATABASE_INI_NEW
+
+echo "Reconfiguration of pgbouncer complete"
+

@@ -1,0 +1,2 @@
+select o.object_name ,t.spare1 from all_objects o, tab$ t
+where t.obj# = o.object_id and o.object_type ='TABLE' and o.object_name in ('FCT_SDW_TRANSACTION','')

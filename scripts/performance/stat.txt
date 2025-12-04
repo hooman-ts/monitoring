@@ -1,0 +1,26 @@
+select * from v$sysstat
+select * from v$sesstat
+select * from v$mystat
+select * from v$service_stats
+
+
+
+SELECT username, name, value
+   FROM v$statname n, v$session s, v$sesstat t
+   WHERE s.sid=t.sid
+   AND   n.statistic#=t.statistic#
+   AND   s.type='USER'
+   AND   s.username is not null
+   AND   n.name='session pga memory'
+   AND   t.value > 30000;
+-----------------------------------------------
+
+SELECT * FROM V$SGAINFO;
+-----------------------------------------------
+
+SELECT * FROM v$sgastat;
+-------------------------------------
+select * from v$sysstat;
+select * from v$sesstat
+select * from v$sys_time_model;
+select * from v$sess_time_model;

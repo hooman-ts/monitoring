@@ -1,0 +1,112 @@
+declare
+l_sql_stmt varchar2(200);
+l_try number;
+l_status number;
+begin
+dbms_parallel_execute.create_task('insert_acceptors');
+ dbms_parallel_execute.create_chunks_by_rowid('insert_acceptors','SHAPARAK','ACCEPTORS',true,100000);
+ l_sql_stmt:='insert /*+ rowid (dda) */ into shaparak.acceptors@db30 select * from shaparak.acceptors
+ where rowid between :start_id and :end_id';
+ dbms_parallel_execute.run_task('insert_acceptors',l_sql_stmt,dbms_sql.native, parallel_level=>32);
+ l_try:=0;
+ l_status:=dbms_parallel_execute.task_status('insert_acceptors');
+ while(l_try<2 and l_status != dbms_parallel_execute.FINISHED)
+ loop
+   l_try:=l_try+1;
+   dbms_parallel_execute.resume_task('insert_acceptors');
+   l_status:=dbms_parallel_execute.task_status('insert_acceptors');
+   
+   end loop;
+   dbms_parallel_execute.drop_task('insert_acceptors');
+   end;
+   
+   
+   /* begin
+   dbms_parallel_execute.drop_task('insert_acceptors');
+   end;
+   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------
+declare
+l_sql_stmt varchar2(200);
+l_try number;
+l_status number;
+begin
+dbms_parallel_execute.create_task('insert_deposit');
+ dbms_parallel_execute.create_chunks_by_rowid('insert_deposit','shaparak','deposittrans_load',true,100000);
+ l_sql_stmt:='insert /*+ rowid (dda) */ into shaparak.batchtrans_load select * from batchtrans_load@dblink
+ where rowid between :start_id and :end_id';
+ dbms_parallel_execute.run_task('insert_deposit',l_sql_stmt,dbns_sql_native, parallel_level=>32);
+ l_try:=0;
+ l_status:=dbms_parallel_execute.task_status('insert_deposit');
+ while(l_try<2 and l_status != dbms_parallel_execute.FINISHED);
+ loop
+   l_try:=l_try+1;
+   dbms_parallel_execute.resume_task_task('insert_deposit');
+   l_status:=dbms_parallel_execute.task_status('insert_deposit');
+   
+   end loop;
+   dbms_parallel_execute.drop_task('insert_deposit');
+   end;
+ /*
+begin
+  dbms_parallel_execute.create_task('insert_deposit');
+  dbms_parallel_execute.create_chunks_by_rowid(
+  task_name => 'insert_deposit',
+  table_owner => shaparak,
+  na*/
+
+
+--------------------------------------------
+
+
+
+declare
+l_sql_stmt varchar2(200);
+l_try number;
+l_status number;
+begin
+dbms_parallel_execute.create_task('insert_deposit');
+ dbms_parallel_execute.create_chunks_by_rowid('insert_deposit','shaparak','deposittrans_load',true,100000);
+ l_sql_stmt:='insert /*+ rowid (dda) */ into shaparak.batchtrans_load select * from batchtrans_load@dblink
+ where rowid between :start_id and :end_id';
+ dbms_parallel_execute.run_task('insert_deposit',l_sql_stmt,dbns_sql_native, parallel_level=>32);
+ l_try:=0;
+ l_status:=dbms_parallel_execute.task_status('insert_deposit');
+ while(l_try<2 and l_status != dbms_parallel_execute.FINISHED);
+ loop
+   l_try:=l_try+1;
+   dbms_parallel_execute.resume_task_task('insert_deposit');
+   l_status:=dbms_parallel_execute.task_status('insert_deposit');
+   
+   end loop;
+   dbms_parallel_execute.drop_task('insert_deposit');
+   end;
+ /*
+begin
+  dbms_parallel_execute.create_task('insert_deposit');
+  dbms_parallel_execute.create_chunks_by_rowid(
+  task_name => 'insert_deposit',
+  table_owner => shaparak,
+  na*/
